@@ -29,7 +29,7 @@ test('test to check getEmail  function', () => {
 test('test to check getRole function', () => {
     const employee = new Employee('Angel', 1, 'angel@test.com');
 
-    let emp = employee.getRole('Employee');
+    // let emp = employee.getRole('Employee');
     
-    expect(emp).toEqual('Employee');
+    expect(employee.getRole()).toEqual('Employee');
 });

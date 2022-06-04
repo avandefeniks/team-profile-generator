@@ -16,22 +16,58 @@ const mgrQuestions = mgrQuestionsData => {
         {
             type: 'input',
             name: 'name',
-            message: "Please enter the Managers's name: (Required)"
+            message: "Please enter the Managers's name: (Required)",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the Managers's name!");
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'id',
-            message: "Please enter the Manager's ID: (Required)" 
+            message: "Please enter the Manager's ID: (Required)",
+            validate: idInput => {
+                if (idInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the Managers's ID!");
+                    return false;
+                }
+            } 
         },
         {
             type: 'input',
             name: 'email',
-            message: "Please enter the Manager's email address: (Required)"
+            message: "Please enter the Manager's email address: (Required)",
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the Managers's email address!");
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'officeNumber',
-            message: "Please enter the Manager's office number: (Required)"
+            message: "Please enter the Manager's office number: (Required)",
+            validate: officeNumberInput => {
+                if (officeNumberInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the Manager's office number!");
+                    return false;
+                }
+            }
         }
     ]) 
     .then((mgrQuestionsData) => {
@@ -41,7 +77,6 @@ const mgrQuestions = mgrQuestionsData => {
         manager.email = mgrQuestionsData.email
         manager.officeNumber = mgrQuestionsData.officeNumber;
         employeesArr.push(manager);
-        // console.log(employeesArr);
         empQuestions();
     });
 };
@@ -60,29 +95,74 @@ const empQuestions = empQuestionsData => {
         {
             type: 'input',
             name: 'name',
-            message: "Please enter the employee's name: (Required)"
+            message: "Please enter the employee's name: (Required)",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the emplyee's name!");
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'id',
-            message: "Please enter the employee's ID: (Required)"
+            message: "Please enter the employee's ID: (Required)",
+            validate: idInput => {
+                if (idInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the employees's ID!");
+                    return false;
+                }
+            } 
         },
         {
             type: 'input',
             name: 'email',
-            message: "Please enter the employee's email address: (Required)"
+            message: "Please enter the employee's email address: (Required)",
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the employee's email address!");
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'github',
             message: "Please enter the engineer's GitHub username: (Required)",
-            when: ({emptype}) => emptype === 'Engineer'
+            when: ({emptype}) => emptype === 'Engineer',
+            validate: githubInput => {
+                if (githubInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the engineer's GitHub username!");
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'school',
             message: "Please enter the intern's school: (Required)",
-            when: ({emptype}) => emptype === 'Intern'
+            when: ({emptype}) => emptype === 'Intern',
+            validate: schoolInput => {
+                if (schoolInput) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter the intern's school!");
+                    return false;
+                }
+            }
         },
         {
             type: 'confirm',
@@ -100,7 +180,6 @@ const empQuestions = empQuestionsData => {
             engineer.email = empQuestionsData.email;
             engineer.github = empQuestionsData.github;
             employeesArr.push(engineer);
-            // console.log(employeesArr);
             
 
         }
@@ -111,7 +190,6 @@ const empQuestions = empQuestionsData => {
             intern.email = empQuestionsData.email;
             intern.school = empQuestionsData.school;
             employeesArr.push(intern);
-            // console.log(employeesArr);
             
         }
         if (empQuestionsData.confirmAdd) {

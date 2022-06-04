@@ -60,7 +60,7 @@ return `
 
 const generateHtml = data => {
     // array for html elements
-    console.log(data);
+    // console.log(data);
     teamArr = [];
 
     // loop through array passed from index.js

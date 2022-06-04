@@ -1,22 +1,22 @@
 // manger card
 const addManager = function (manager) {
-return `
-    <div class="col-12 col-md-6 col-lg-3 col-xl-3">
-        <div class="card">
-            <div class="shadow">
-                <div class="bg-dark text-white text-start">
-                <h4>${manager.name}</h4>
-                <h3>Manager</h3>
+    return `
+        <div class="col-12 col-md-6 col-lg-3 col-xl-3">
+            <div class="card">
+                <div class="shadow">
+                    <div class="bg-dark text-white text-start">
+                    <h3>${manager.name}</h3>
+                    <h4>Manager</h4>
+                    </div>
+                    <ul class="list-group list-group-flush text-start">
+                        <li class="list-group-item">ID: ${manager.id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
+                        <li class="list-group-item">Office Number: ${manager.officeNumber}</ali>
+                    </ul>
                 </div>
-                <ul class="list-group list-group-flush text-start">
-                    <li class="list-group-item">ID: ${manager.id}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
-                    <li class="list-group-item">Office Number ${manager.officeNumber}</li>
-                </ul>
             </div>
-        </div>
-    </div>`
-}
+        </div>`
+    }
 
 // engineer card
 const addEngineer = function (engineer) {
@@ -25,8 +25,8 @@ return `
         <div class="card">
             <div class="shadow">
                 <div class="bg-dark text-white text-start">
-                <h4>${engineer.name}</h4>
-                <h3>Engineer</h3>
+                <h3>${engineer.name}</h3>
+                <h4>Engineer</h4>
                 </div>
                 <ul class="list-group list-group-flush text-start">
                     <li class="list-group-item">ID: ${engineer.id}</li>
@@ -45,13 +45,13 @@ return `
         <div class="card">
             <div class="shadow">
                 <div class="bg-dark text-white text-start">
-                <h4>${intern.name}</h4>
-                <h3>Manager</h3>
+                <h3>${intern.name}</h3>
+                <h4>Intern</h4>
                 </div>
                 <ul class="list-group list-group-flush text-start">
                     <li class="list-group-item">ID: ${intern.id}</li>
                     <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
-                    <li class="list-group-item">Office Number ${intern.school}</li>
+                    <li class="list-group-item">School: ${intern.school}</li>
                 </ul>
             </div>
         </div>
@@ -60,6 +60,7 @@ return `
 
 const generateHtml = data => {
     // array for html elements
+    console.log(data);
     teamArr = [];
 
     // loop through array passed from index.js
@@ -77,12 +78,13 @@ const generateHtml = data => {
         if (role === 'Engineer') {
             const engineerFile = addEngineer(employee);
             teamArr.push(engineerFile);
+            // console.log(teamArr);
         }
 
         // check for intern object
         if (role === 'Intern') {
             const internFile = addIntern(employee);
-            teamArr.push(internFile);
+            teamArr.push(internFile); 
         }
     }
     const cardsArr = teamArr.join('');

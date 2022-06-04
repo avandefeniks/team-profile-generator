@@ -41,7 +41,7 @@ const mgrQuestions = mgrQuestionsData => {
         manager.email = mgrQuestionsData.email
         manager.officeNumber = mgrQuestionsData.officeNumber;
         employeesArr.push(manager);
-        console.log(employeesArr);
+        // console.log(employeesArr);
         empQuestions();
     });
 };
@@ -100,7 +100,7 @@ const empQuestions = empQuestionsData => {
             engineer.email = empQuestionsData.email;
             engineer.github = empQuestionsData.github;
             employeesArr.push(engineer);
-            console.log(employeesArr);
+            // console.log(employeesArr);
             
 
         }
@@ -111,35 +111,38 @@ const empQuestions = empQuestionsData => {
             intern.email = empQuestionsData.email;
             intern.school = empQuestionsData.school;
             employeesArr.push(intern);
-            console.log(employeesArr);
+            // console.log(employeesArr);
             
         }
         if (empQuestionsData.confirmAdd) {
-            return empQuestions(employeesArr);
+            empQuestions(employeesArr);
+        }
+        else {
+            fs.writeFile('./dist/index.html', generateHtml(employeesArr), err => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log('Team profile created successfully');
+                }
+            })
         }
         
     })
-    .then((employeesArr) => {
-        return generateHtml(employeesArr)
-    })
-    .then((htmlFile) => {
-        fs.writeFile('./dist/index.html', htmlFile, err => {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log('Team profile created successfully');
-            }
-        })
-    });
-
-    // function writeToFile(fileName, data) {
-    //     fs.writeFile(fileName, data, err => {
+    // .then((employeesArr) => {
+    //     return generateHtml(employeesArr)
+    // })
+    // .then((htmlFile) => {
+    //     fs.writeFile('./dist/index.html', htmlFile, err => {
     //         if (err) {
     //             console.log(err);
     //         }
+    //         else {
+    //             console.log('Team profile created successfully');
+    //         }
     //     })
-    // }
+    // });
+
 }
 
 mgrQuestions()

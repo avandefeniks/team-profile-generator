@@ -8,6 +8,7 @@ This is a CLI application that allows a person to enter in information about a c
 * Jest
 * OOP
 * Node.js
+* Inquirer
 * JavaScript
 * HTML
 * CSS
